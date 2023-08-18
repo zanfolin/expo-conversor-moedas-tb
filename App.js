@@ -14,7 +14,11 @@ export default function App() {
     try {
       let page = await fetch(URL);
       let json = await page.json();
-      console.log(json);
+      // console.log(json);
+      let indice = parseFloat(json[`${moedaOrigem}${moedaDestino}`].high)
+      // setResultado(indice)
+      let valor = parseFloat(valorEntrada)
+      setResultado((indice*valor).toFixed(2))
     } catch (error) {
       setResultado(`Erro: ${error.message}`)
     }
