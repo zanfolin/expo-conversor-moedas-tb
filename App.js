@@ -9,6 +9,17 @@ export default function App() {
   const [valorEntrada, setVAlorEntrada] = useState('33.33')
   const [resultado, setResultado] = useState('')
 
+  const handleConverter = () => {
+    setResultado('Teste')
+   }
+
+  const handleLimpar = () => {
+    setResultado('');
+    setVAlorEntrada('33.33333');
+    setMoedaOrigem('BRL');
+    setMoedaDestino('USD');
+   }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Convesor de Moedas</Text>
@@ -51,14 +62,15 @@ export default function App() {
           value={valorEntrada}
           onChangeText={setVAlorEntrada}
           keyboardType='numeric'>
-         </TextInput>
+        </TextInput>
       </View>
-      <Pressable style={styles.button}>
+      <Pressable onPress={handleConverter} style={styles.button}>
         <Text style={styles.title}>Conveter</Text>
       </Pressable>
-      <Pressable style={styles.button}>
+      <Pressable onPress={handleLimpar} style={styles.button}>
         <Text style={styles.title}>Limpar</Text>
       </Pressable>
+      <View><Text style={styles.lbResultado}>{resultado}</Text></View>
       <StatusBar style="auto" />
     </View>
   );
@@ -98,5 +110,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5
+  },
+  lbResultado: {
+    color: '#fff'
   }
 });
