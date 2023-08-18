@@ -9,8 +9,15 @@ export default function App() {
   const [valorEntrada, setVAlorEntrada] = useState('33.33')
   const [resultado, setResultado] = useState('')
 
-  const handleConverter = () => {
-    setResultado('Teste')
+  const handleConverter = async () => {
+    let URL = `https://economia.awesomeapi.com.br/last/${moedaOrigem}-${moedaDestino}`;
+    try {
+      let page = await fetch(URL);
+      let json = await page.json();
+      console.log(json);
+    } catch (error) {
+      setResultado(`Erro: ${error.message}`)
+    }
    }
 
   const handleLimpar = () => {
